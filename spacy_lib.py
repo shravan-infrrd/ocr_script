@@ -4,8 +4,8 @@ from spacy.matcher import Matcher
 all_entities = []
 def add_event_ent(matcher, doc, i, matches):
     label = doc.vocab.strings[matches[i][0]]
-    # print('Label====>', label)
-    # print('Doc  ====>', doc)
+    print('Label====>', label)
+    print('Doc  ====>', doc)
     _, start, end = matches[i]
     entity_type = None
     entity_type = doc.vocab.strings[label]
@@ -56,19 +56,24 @@ def initialize_spacy():
 
 
 def split_entity(text):
-    # print('---------------TEXT-----------------')
-    # print(text)
+    print('---------------TEXT-----------------')
+    print(text)
     nlp = None
     matcher = None
     doc = None
     nlp, matcher = initialize_spacy()
     doc = nlp(u"{}".format(text))
     matcher(doc)
-    # print('---------------SPACY----------------')
-    # print(all_entities)
+    print('---------------SPACY----------------')
+    print(all_entities)
+    if not all_entities:
+        return []
     labels = ['LICENSE', 'ISSUED', 'EXPIRY']
     expected = []
     for label in labels:
-	    expected.append( [d for d in all_entities if d['tag'] == label][-1])
+	    expected.append( [d['value'] for d in all_entities if d['tag'] == label][-1])
+
+    print(expected)
+    return expected
     return [f['value'] for f in expected]
 

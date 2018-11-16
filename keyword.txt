@@ -2,10 +2,16 @@ LICENSE No.
 EXPIRES
 Expiration
 Effective
-identification Number
+Identification Number
 Issuance Date
 Expiration Date
 Date Issued
 Date Expires
 Issued
 Expires
+Issued on
+Set to expire on
+Holding credential number
+Administrative Identification Number
+LICENSE NUMBER
+EXPIRATION DATE

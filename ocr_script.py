@@ -70,5 +70,5 @@ def mainFun(path):
     
     # lines = rearrageList(slist)
 
-    return {'data': slist}
+    return {'tessaract_output': lines,'data': slist}
 
