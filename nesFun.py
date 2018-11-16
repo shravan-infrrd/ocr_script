@@ -2,7 +2,6 @@ import sqlite3
 
 import pandas
 import re
-list = []
 orderedList = ["1", "2", "3", "4", "5", "6", "7"]
 index = pandas.read_csv("fields.csv")
 keyWordList = ["gst", "invoice id", "Order", "PAN NO", "Retailer", "Shipping info", "Delivered to"]
@@ -19,9 +18,9 @@ def readKeyWord():
         keyWords = (fp.readlines())
     return keyWords
 
-def push(word):
-    print('================Identified: {}================='.format(word[0]))
-    list.append(word)
+def push(slist, word):
+    print('================Identified: {}: {}================'.format(word[0], word[1]))
+    slist.append(word)
 
 
 def isEmpty(word):
@@ -30,11 +29,7 @@ def isEmpty(word):
     return False
 
 def isPincode(pinCde):
-#    print('^^^^^^^^^^')
-#    print(pinCde)
     txt = re.split(":|—", pinCde)
-#    print(txt)
-#    print('^^^^^^^^^^')
     for pinCode in txt:
     # if len(pinCode) < 6:
     #     return False
@@ -61,14 +56,10 @@ def getIndex(strings):
     return -1
 
 
-def rearrageList():
-#    print('_______________________________')
-#    print(list)
-    for i in list:
-#        print('------->', i)
+def rearrageList(slist):
+    for i in slist:
         tmp = i[0]
         orderedList[getIndex(tmp)] = i[1]
-    # printList()
     return orderedList
 
 def insertIntoDB(keyList):
