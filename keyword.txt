@@ -12,6 +12,8 @@ Expires
 Issued on
 Set to expire on
 Holding credential number
-Administrative Identification Number
+Identification Number
 LICENSE NUMBER
 EXPIRATION DATE
+ISSUED ON
+EXPIRES ON

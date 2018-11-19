@@ -21,10 +21,11 @@ def process_data(lines, keyWords):
         if check_keyword_limit(line, keyWords) == True:
             lines.remove(line)
             obj = spacy_lib.split_entity(line)
+            print('---OBJ---', obj)
             lines += obj
-            return obj
+            return lines
     
-    return None
+    return lines
 
 
 
@@ -43,15 +44,17 @@ def mainFun(path):
     print('*******************NEW LINES*******************')
     print(new_lines)
     i = 0
-    if new_lines != None:
+    if not new_lines:
         lines = new_lines
 
     while i < len(lines):
 
         word = re.split(":|-|~|#", lines[i])
         if isKeyWord(keyWords, word[0]):
+            print('=====>', word)
             if (isEmpty(word[1])):
                 i += 1
+                print('---WORD-->', word, '---index--->', i)
                 while (i < len(lines)):
                     flag = False
                     word[1] += " " + lines[i]
@@ -70,5 +73,5 @@ def mainFun(path):
     
     # lines = rearrageList(slist)
 
-    return {'tessaract_output': lines,'data': slist}
+    return {'data': slist}
 
