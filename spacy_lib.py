@@ -35,12 +35,11 @@ def initialize_spacy():
                 )
 
     matcher.add('ISSUED', add_event_ent,
-                [{'LOWER': 'date'}, {'LOWER': 'issued'}, {'ORTH': ':'}, {'ENT_TYPE': 'DATE'}],
-                [{'LOWER': 'issued'}, {'ORTH': 'on'}, {'ORTH': ':'}, {'ENT_TYPE': 'DATE'}],
+                # [{'LOWER': 'date'}, {'LOWER': 'issued'}, {'ORTH': ':'}, {'ENT_TYPE': 'DATE'}],
+                [{'LOWER': 'issued'}, {'LOWER': 'on'}, {'ORTH': ':'}, {'ENT_TYPE': 'DATE'}],
                 [{'LOWER': 'issuance'}, {'lower': 'date'}, {'ORTH': ':'}, {'ENT_TYPE': 'DATE'}],
                 [{'LOWER': 'issuance'}, {'lower': 'date'}, {'ORTH': ':'}, {'ENT_TYPE': 'DATE'}, {'ENT_TYPE': 'DATE'}],
                 [{'LOWER': 'effective'}, {'ORTH': ':'}, {'ENT_TYPE': 'DATE'}],
-                [{'LOWER': 'date'}, {'LOWER': 'issued'}, {'ORTH': ':'}, {'ENT_TYPE': 'DATE'}],
                 [{'LOWER': 'date'}, {'LOWER': 'issued'}, {'ORTH': ':'}, {"SHAPE": "d/d/dddd"}],
                 [{'LOWER': 'date'}, {'LOWER': 'issued'}, {'ORTH': ':'}, {"SHAPE": "dd/d/dddd"}],
                 [{'LOWER': 'date'}, {'LOWER': 'issued'}, {'ORTH': ':'}, {"SHAPE": "d/dd/dddd"}],
@@ -51,19 +50,23 @@ def initialize_spacy():
                 )
 
     matcher.add('EXPIRY', add_event_ent,
-                [{'LOWER': 'date'}, {'LOWER': 'issued'}, {'ORTH': ':'}, {'ENT_TYPE': 'DATE'}],
-                [{'LOWER': 'expires'}, {'ORTH': ':'}, {'ENT_TYPE': 'DATE'}],
-                [{'LOWER': 'expires'}, {'ORTH': ':'}, {"SHAPE": "d/d/dddd"}],
-                [{'LOWER': 'expires'}, {'ORTH': ':'}, {"SHAPE": "dd/d/dddd"}],
-                [{'LOWER': 'expires'}, {'ORTH': ':'}, {"SHAPE": "d/dd/dddd"}],
-                [{'LOWER': 'expires'}, {'ORTH': ':'}, {"SHAPE": "dd/dd/dddd"}],
-                [{'LOWER': 'expires'}, {'ORTH': ':'}, {"ENT_TYPE": "DATE", "IS_ALPHA": True}, {"ENT_TYPE": "DATE", "IS_DIGIT": True}, {"ENT_TYPE": "DATE", "ORTH": ",", "OP": "?"}, {"ENT_TYPE": "DATE", "IS_DIGIT": True}],
-                [{'LOWER': 'expires'}, {'ORTH': ':'}, {"ENT_TYPE": "DATE", "IS_ALPHA": True}, {"ENT_TYPE": "DATE", "IS_DIGIT": True}, {"ENT_TYPE": "DATE", "ORTH": ",", "OP": "?"}, {}],
-                [{'LOWER': 'expiration'}, {'LOWER': 'date'}, {'ORTH': ':'}, {'ENT_TYPE': 'DATE'}],
-                [{'LOWER': 'expiration'}, {'LOWER': 'date'}, {'ORTH': ':'}, {'ENT_TYPE': 'DATE'}, {'ENT_TYPE': 'DATE'}, {'ORTH': ','}, {'ENT_TYPE': 'DATE'}],
-                [{'LOWER': 'expiration'}, {'ORTH': ':'}, {'ENT_TYPE': 'DATE'}],
-                [{'LOWER': 'expire'}, {'LOWER': 'on'}, {'ORTH': ':'}, {'ENT_TYPE': 'DATE'}],
-                [{'LOWER': 'expires'}, {'ORTH': ':'}, {'ENT_TYPE': 'DATE', 'IS_ALPHA': True}, {'ENT_TYPE': 'DATE', 'ORTH': ',', 'OP': '?'}, {}],
+                [{'LOWER': 'expiration'}, {'LOWER': 'date'}, {'ORTH': ':'}, {'ENT_TYPE': 'DATE', 'IS_ALPHA': True,'SHAPE': 'XXXX'}, {'ENT_TYPE': 'DATE', 'ORTH': ',', 'OP': '?'}, {'ENT_TYPE': 'DATE', 'IS_DIGIT': True}],
+                # [{'LOWER': 'date'}, {'LOWER': 'issued'}, {'ORTH': ':'}, {'ENT_TYPE': 'DATE'}],
+                # [{'LOWER': 'expires'}, {'ORTH': ':'}, {'ENT_TYPE': 'DATE'}],
+                # [{'LOWER': 'expires'}, {'ORTH': ':'}, {"SHAPE": "d/d/dddd"}],
+                # [{'LOWER': 'expires'}, {'ORTH': ':'}, {"SHAPE": "dd/d/dddd"}],
+                # [{'LOWER': 'expires'}, {'ORTH': ':'}, {"SHAPE": "d/dd/dddd"}],
+                # [{'LOWER': 'expires'}, {'ORTH': ':'}, {"SHAPE": "dd/dd/dddd"}],
+                # [{'LOWER': 'expires'}, {'ORTH': ':'}, {"ENT_TYPE": "DATE", "IS_ALPHA": True}, {"ENT_TYPE": "DATE", "IS_DIGIT": True}, {"ENT_TYPE": "DATE", "ORTH": ",", "OP": "?"}, {"ENT_TYPE": "DATE", "IS_DIGIT": True}],
+                # [{'LOWER': 'expires'}, {'ORTH': ':'}, {"ENT_TYPE": "DATE", "IS_ALPHA": True}, {"ENT_TYPE": "DATE", "IS_DIGIT": True}, {"ENT_TYPE": "DATE", "ORTH": ",", "OP": "?"}, {}],
+                # [{'LOWER': 'expiration'}, {'LOWER': 'date'}, {'ORTH': ':'}, {'ENT_TYPE': 'DATE'}],
+                # [{'LOWER': 'expiration'}, {'LOWER': 'date'}, {'ORTH': ':'}, {'ENT_TYPE': 'DATE'}, {'ENT_TYPE': 'DATE'}, {'ORTH': ','}, {'ENT_TYPE': 'DATE'}],
+                # [{'LOWER': 'expiration'}, {'ORTH': ':'}, {'ENT_TYPE': 'DATE'}],
+                # [{'LOWER': 'expire'}, {'LOWER': 'on'}, {'ORTH': ':'}, {'ENT_TYPE': 'DATE'}],
+                # [{'LOWER': 'expires'}, {'ORTH': ':'}, {'ENT_TYPE': 'DATE', 'IS_ALPHA': True}, {'ENT_TYPE': 'DATE', 'ORTH': ',', 'OP': '?'}, {}],
+                # [{'LOWER': 'expiration'}, {'LOWER': 'date'}, {'ORTH': ':'}, {'ENT_TYPE': 'DATE', 'IS_ALPHA': True, 'SHAPE': 'XXXX'}, {'ENT_TYPE': 'DATE', 'ORTH': ',', 'OP': '?'}, {}],
+                # [{'LOWER': 'expiration'}, {'LOWER': 'date'}, {'ORTH': ':'}, {'ENT_TYPE': 'DATE', 'IS_ALPHA': True, 'SHAPE': 'XXXX'}, {'ENT_TYPE': 'DATE', 'ORTH': ',', 'OP': '?'}, {'ENT_TYPE': 'DATE', 'IS_DIGIT': True}],
+                # [{'UPPER': 'EXPIRATION'}, {'UPPER': 'DATE'}, {'ORTH': ':'}, {'ENT_TYPE': 'DATE', 'IS_ALPHA': True,'SHAPE': 'XXXX'}, {'ENT_TYPE': 'DATE', 'ORTH': ',', 'OP': '?'}, {'ENT_TYPE': 'DATE', 'IS_DIGIT': True}]
             )
 
     return nlp, matcher

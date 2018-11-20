@@ -11,7 +11,7 @@ Issued
 Expires
 Issued on
 Set to expire on
-Holding credential number
+credential number
 Identification Number
 LICENSE NUMBER
 EXPIRATION DATE

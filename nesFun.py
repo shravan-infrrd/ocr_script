@@ -9,8 +9,9 @@ keyWordList = ["gst", "invoice id", "Order", "PAN NO", "Retailer", "Shipping inf
 
 def isKeyWord(wordList, word):
     for s in wordList:
-        if str(s).lower().strip("\n").strip(" ") == str(word).lower():
+        if str(s).lower().strip("\n").strip(" ") in str(word).lower():
             return True
+        
     return False
 
 def readKeyWord():
